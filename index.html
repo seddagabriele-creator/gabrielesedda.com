@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriele Sedda | International Sales Lead</title>
+    <meta name="description" content="Gabriele Sedda: Senior Sales Lead - International Markets. Scaling revenue globally after driving +300% growth in Southern Europe.">
+    
+    <!-- 1. MOTORE GRAFICO (Tailwind CSS via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. ICONE -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- 3. FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
+
+    <!-- 4. CONFIGURAZIONE DESIGN -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#f4f1ea',      
+                        'brand-text': '#ea4c2a',    
+                        'brand-blue': '#2d76b1',    
+                    },
+                    fontFamily: {
+                        'titan': ['"Titan One"', 'cursive'],
+                        'syne': ['"Syne"', 'sans-serif'],
+                        'inter': ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f4f1ea;
+            color: #ea4c2a;
+            font-family: 'Syne', sans-serif;
+            overflow-x: hidden; 
+        }
+        ::selection { background-color: #ea4c2a; color: #f4f1ea; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Modal Backdrop Blur */
+        .modal-open { overflow: hidden; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 bg-[#f4f1ea]/90 backdrop-blur-sm">
+        <div class="font-bold text-xl tracking-tighter hover:opacity-80 cursor-pointer font-syne z-50">
+            GABRIELE SEDDA
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8 font-medium text-lg font-syne">
+            <a href="#about" class="hover:opacity-70 transition-opacity">About</a>
+            <a href="#experience" class="hover:opacity-70 transition-opacity">Experience</a>
+            <a href="#skills" class="hover:opacity-70 transition-opacity">Skills</a>
+            <a href="playground.html" class="text-brand-blue hover:opacity-70 transition-opacity flex items-center gap-1">
+                Playground <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+            </a>
+            <a href="#contact" class="hover:opacity-70 transition-opacity">Contact</a>
+        </div>
+
+        <div class="hidden lg:block">
+            <a href="mailto:seddagabriele@gmail.com" class="border-2 border-brand-text px-6 py-2 rounded-full font-bold hover:bg-brand-text hover:text-brand-bg transition-all uppercase text-sm font-syne">
+                Let's Talk
+            </a>
+        </div>
+
+        <button id="menu-btn" class="lg:hidden z-50 text-brand-text cursor-pointer">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-bg z-40 flex flex-col items-center justify-center gap-8 text-3xl font-bold hidden opacity-0 transition-opacity duration-300 font-syne">
+        <a href="#about" class="mobile-link hover:opacity-70" onclick="closeMenu()">About</a>
+        <a href="#experience" class="mobile-link hover:opacity-70" onclick="closeMenu()">Experience</a>
+        <a href="#skills" class="mobile-link hover:opacity-70" onclick="closeMenu()">Skills</a>
+        <a href="playground.html" class="mobile-link hover:opacity-70 text-brand-blue" onclick="closeMenu()">
+            Playground
+        </a>
+        <a href="#contact" class="mobile-link hover:opacity-70" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header id="about" class="pt-32 pb-20 px-4 md:px-12 flex flex-col items-center text-center relative w-full overflow-hidden">
+        
+        <!-- Badge -->
+        <div class="relative md:absolute md:top-36 md:right-[10%] rotate-12 animate-bounce-slow mb-8 md:mb-0 z-10 pointer-events-none">
+            <div class="bg-brand-blue text-white font-titan px-6 py-3 rounded-full rounded-br-none shadow-xl text-lg md:text-xl transform rotate-3 border-4 border-brand-bg">
+                Sales Pro!
+            </div>
+        </div>
+
+        <div class="relative z-0 leading-[0.85] w-full max-w-7xl mx-auto">
+            <h1 class="font-titan text-[13vw] md:text-[11vw] w-full break-words select-none tracking-tight m-0 p-0">
+                GABRIELE
+            </h1>
+            <h1 class="font-titan text-[13vw] md:text-[11vw] w-full break-words select-none mt-2 md:mt-0 m-0 p-0">
+                SEDDA
+            </h1>
+        </div>
+
+        <div class="max-w-3xl mx-auto mt-12 md:mt-16 relative z-10 px-4">
+            <p class="font-bold text-2xl md:text-4xl leading-tight font-syne">
+                Senior Sales Executive | International Markets
+                <span class="block mt-6 font-inter font-normal text-lg md:text-xl opacity-80 max-w-2xl mx-auto leading-relaxed">
+                    I open new markets and scale revenue. After driving <strong>+300% growth</strong> in Spain & Latam, I now focus on International Expansion.
+                </span>
+            </p>
+        </div>
+    </header>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <h2 class="font-titan text-5xl md:text-7xl mb-20 text-center md:text-left border-b-4 border-brand-text inline-block pb-2">WORK.</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+            <!-- Clickio (EVOLVED) -->
+            <div class="group transition-transform duration-300 border-t-4 border-brand-text pt-6 relative">
+                <div class="flex flex-wrap justify-between items-baseline mb-3 gap-2">
+                    <h3 class="font-bold text-3xl md:text-4xl m-0 font-syne">Clickio</h3>
+                    <span class="font-inter font-bold text-lg opacity-60">2019 — Present</span>
+                </div>
+
+                <!-- PHASE 2 (CURRENT) -->
+                <div class="mb-4">
+                    <span class="bg-brand-text text-brand-bg font-bold px-3 py-1 text-sm md:text-base inline-block transform -rotate-1 font-syne">
+                        Sales Lead - International Markets
+                    </span>
+                    <span class="block mt-2 text-sm font-bold text-brand-blue uppercase tracking-widest font-syne">Jan 2026 — Present</span>
+                </div>
+                <p class="font-inter text-lg opacity-90 leading-relaxed mb-6">
+                    Promoted to spearhead global expansion. Leveraging the autonomy of the Southern Europe team to focus purely on <strong>opening new territories</strong> and closing Key Publisher deals.
+                </p>
+
+                <!-- PHASE 1 (LEGACY) -->
+                 <div class="pl-4 border-l-2 border-brand-text/20 mb-8">
+                    <span class="block text-xs font-bold uppercase tracking-widest opacity-50 mb-2 font-syne">Previously: Regional Team Lead (2019-2025)</span>
+                    <ul class="font-inter text-base space-y-3 opacity-80 leading-relaxed list-none p-0">
+                        <li class="flex gap-2 items-start">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-text"></i>
+                            <span>Built a high-performing unit that generated a <strong>record revenue</strong> in 2025 (+41% YoY).</span>
+                        </li>
+                        <li class="flex gap-2 items-start">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-text"></i>
+                            <span>Scaled Spain & Latam by <strong>300%</strong> total value over 6 years.</span>
+                        </li>
+                    </ul>
+                 </div>
+
+                <!-- BUTTON -->
+                <button id="open-modal-btn" class="group/btn inline-flex items-center gap-2 border-2 border-brand-text px-5 py-2 rounded-full font-bold text-sm hover:bg-brand-text hover:text-brand-bg transition-colors font-syne uppercase tracking-wider">
+                    <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                    View Track Record
+                </button>
+            </div>
+
+            <!-- Marfeel -->
+            <div class="group hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-text pt-6">
+                <div class="flex flex-wrap justify-between items-baseline mb-3 gap-2">
+                    <h3 class="font-bold text-3xl md:text-4xl m-0 font-syne">Marfeel</h3>
+                    <span class="font-inter font-bold text-lg opacity-60">2017 — 2019</span>
+                </div>
+                <h4 class="font-bold text-xl mb-6 opacity-80 m-0 font-syne">Strategic Partnership Executive</h4>
+                <ul class="font-inter text-lg space-y-4 opacity-90 leading-relaxed list-none p-0">
+                    <li class="flex gap-3 items-start">
+                        <i data-lucide="zap" class="w-6 h-6 flex-shrink-0 mt-1"></i>
+                        <span>Built a custom mass-messaging automation tool to solve prospecting bottlenecks.</span>
+                    </li>
+                    <li class="flex gap-3 items-start">
+                        <i data-lucide="trending-up" class="w-6 h-6 flex-shrink-0 mt-1"></i>
+                        <span>Increased conversation rates, driving a +120% target achievement.</span>
+                    </li>
+                </ul>
+            </div>
+            
+             <!-- Hibox -->
+             <div class="group hover:-translate-y-2 transition-transform duration-300 border-t-4 border-brand-text pt-6">
+                <div class="flex flex-wrap justify-between items-baseline mb-3 gap-2">
+                    <h3 class="font-bold text-3xl md:text-4xl m-0 font-syne">Hibox (SaaS)</h3>
+                    <span class="font-inter font-bold text-lg opacity-60">2016 — 2017</span>
+                </div>
+                <h4 class="font-bold text-xl mb-6 opacity-80 m-0 font-syne">Sales & Marketing Executive</h4>
+                <p class="font-inter text-lg opacity-90 leading-relaxed m-0">Managed high-velocity inbound and outbound cycles for a B2B Collaboration Platform.</p>
+            </div>
+
+            <!-- Memio -->
+            <div class="group hover:-translate-y-2 transition-transform duration-300 md:col-span-1">
+                <div class="bg-brand-text text-brand-bg p-8 rounded-[2rem] transform rotate-1 shadow-xl flex flex-col items-start h-full">
+                    <div class="flex justify-between items-start w-full mb-4">
+                        <h3 class="font-bold text-3xl m-0 font-syne">Memio (IoT)</h3>
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-4 m-0 font-syne">Co-Founder & Award Winner</h4>
+                    <p class="font-inter text-lg leading-relaxed m-0 mb-6">Awarded 1st Prize in Europe's major startup competition (InnovAction Lab 2015). Pitched to top-tier investors (Google Ventures).</p>
+                    
+                    <a href="https://www.wired.it/economia/start-up/2015/05/21/innovaction-lab-2015-vince-memio-portapillole-smart/" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-2 bg-brand-bg text-brand-text px-5 py-3 rounded-full font-bold text-sm hover:scale-105 hover:bg-white transition-all font-syne shadow-md group-hover:shadow-lg">
+                        <i data-lucide="newspaper" class="w-4 h-4"></i>
+                        Featured on Wired.it
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS MODAL (UPDATED) -->
+    <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-brand-text/20 backdrop-blur-sm" id="modal-backdrop"></div>
+        
+        <!-- Content -->
+        <div class="bg-brand-bg border-4 border-brand-text rounded-[2rem] shadow-[10px_10px_0px_0px_rgba(234,76,42,1)] max-w-2xl w-full relative z-10 p-8 md:p-12 animate-fade-in overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button id="close-modal-btn" class="absolute top-6 right-6 p-2 hover:bg-brand-text/10 rounded-full transition-colors z-20">
+                <i data-lucide="x" class="w-8 h-8 text-brand-text"></i>
+            </button>
+            
+            <div class="flex items-center gap-3 mb-6">
+                 <div class="bg-brand-text text-brand-bg p-2 rounded-lg transform -rotate-3">
+                    <i data-lucide="line-chart" class="w-6 h-6"></i>
+                 </div>
+                 <span class="font-syne font-bold text-brand-text opacity-60 uppercase tracking-widest text-sm">Career Evolution</span>
+            </div>
+
+            <h3 class="font-titan text-3xl md:text-5xl mb-6 leading-none uppercase">From Builder to Expander.</h3>
+            
+            <p class="font-inter text-lg leading-relaxed mb-8 opacity-90">
+                My path has evolved from hands-on hunting to strategic team building, and now to global market expansion.
+            </p>
+
+            <!-- Timeline Grid -->
+            <div class="space-y-8">
+                
+                <!-- Phase 3: The Expander (Current) -->
+                <div class="relative pl-6 border-l-4 border-brand-text">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 bg-brand-text rounded-full animate-pulse"></div>
+                    <h4 class="font-titan text-2xl text-brand-blue mb-2">Phase 3: The Expander (2026-Present)</h4>
+                    <p class="font-syne font-bold opacity-70 mb-3 text-sm">ROLE: INTERNATIONAL SALES LEAD</p>
+                    <ul class="font-inter text-base space-y-2 opacity-90">
+                        <li class="flex gap-2">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 text-brand-text"></i>
+                            <span><strong>Focus:</strong> Opening new international markets and managing Key Strategic Accounts.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 text-brand-text"></i>
+                            <span><strong>Strategic Sales:</strong> Driving high-impact revenue by personally securing lighthouse deals in untapped territories.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2: Team Lead -->
+                <div class="relative pl-6 border-l-4 border-brand-text/30">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 bg-brand-text rounded-full"></div>
+                    <h4 class="font-titan text-2xl text-brand-text opacity-80 mb-2">Phase 2: The Scaler (2021-2025)</h4>
+                    <p class="font-syne font-bold opacity-70 mb-3 text-sm">ROLE: SALES & TEAM LEAD</p>
+                    <ul class="font-inter text-base space-y-2 opacity-90">
+                        <li class="flex gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-text"></i>
+                            <span><strong>Record Growth:</strong> Scaled Spain & Latam to <strong>record annual revenue</strong> (+41% in 2025).</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-text"></i>
+                            <span><strong>Legacy:</strong> Built a self-sufficient team of high-performing junior sales reps.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Phase 1: Individual Contributor -->
+                <div class="relative pl-6 border-l-4 border-brand-text/30">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 bg-brand-text rounded-full"></div>
+                    <h4 class="font-titan text-2xl text-brand-text opacity-80 mb-2">Phase 1: The Hunter (2019-2021)</h4>
+                    <p class="font-syne font-bold opacity-70 mb-3 text-sm">ROLE: INDIVIDUAL CONTRIBUTOR</p>
+                    <ul class="font-inter text-base space-y-2 opacity-90">
+                        <li class="flex gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-text"></i>
+                            <span>Doubled the value of the Spanish market in 2 years (+68% during COVID).</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="bg-brand-text text-brand-bg py-8 overflow-hidden transform -rotate-1 my-12 border-y-4 border-brand-bg">
+        <div class="flex whitespace-nowrap animate-marquee font-titan">
+            <span class="text-4xl md:text-6xl mx-8">GLOBAL EXPANSION • NEW MARKET ENTRY • KEY PUBLISHERS •</span>
+            <span class="text-4xl md:text-6xl mx-8">GLOBAL EXPANSION • NEW MARKET ENTRY • KEY PUBLISHERS •</span>
+            <span class="text-4xl md:text-6xl mx-8">GLOBAL EXPANSION • NEW MARKET ENTRY • KEY PUBLISHERS •</span>
+        </div>
+    </div>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-24 px-6 md:px-12 max-w-6xl mx-auto text-center">
+        <h2 class="font-titan text-5xl md:text-7xl mb-8">STACK.</h2>
+        <p class="text-2xl mb-16 max-w-2xl mx-auto opacity-80 font-syne">
+            Leveraging technology to maximize sales efficiency.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6 font-syne">
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default">Salesforce</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default bg-brand-bg">Outreach.io</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default">Pipedrive</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default bg-brand-bg">Sales Navigator</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default">Tableau</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default bg-brand-bg">Excel Advanced</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default">Google Analytics</span>
+            <span class="font-bold text-lg md:text-2xl px-6 py-3 rounded-full border-4 border-brand-text hover:bg-brand-text hover:text-brand-bg transition-all cursor-default bg-brand-bg">Notion</span>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact" class="py-24 px-6 md:px-12 bg-brand-text text-brand-bg">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12 text-center md:text-left">
+            <div>
+                <h2 class="font-titan text-6xl md:text-9xl mb-8 leading-none m-0">SAY CIAO.</h2>
+                <div class="space-y-6 text-xl md:text-3xl flex flex-col items-center md:items-start font-syne">
+                    <a href="mailto:seddagabriele@gmail.com" class="flex items-center gap-4 hover:underline decoration-4 underline-offset-4 text-brand-bg">
+                        <i data-lucide="mail" class="w-8 h-8 md:w-10 md:h-10"></i>
+                        seddagabriele@gmail.com
+                    </a>
+                    <a href="tel:+393405668691" class="flex items-center gap-4 hover:underline decoration-4 underline-offset-4 text-brand-bg">
+                        <i data-lucide="phone" class="w-8 h-8 md:w-10 md:h-10"></i>
+                        +39 340 56 68 691 (IT)
+                    </a>
+                     <a href="tel:+34684064922" class="flex items-center gap-4 hover:underline decoration-4 underline-offset-4 text-brand-bg">
+                        <i data-lucide="phone" class="w-8 h-8 md:w-10 md:h-10"></i>
+                        +34 684 06 49 22 (ES)
+                    </a>
+                    <a href="https://linkedin.com/in/gabriele-sedda-clickio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 hover:underline decoration-4 underline-offset-4 text-brand-bg">
+                        <i data-lucide="linkedin" class="w-8 h-8 md:w-10 md:h-10"></i>
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end gap-6 w-full md:w-auto">
+                <a href="Gabriele_Sedda_CV.pdf" download="Gabriele_Sedda_CV.pdf" class="bg-brand-bg text-brand-text font-bold px-10 py-5 rounded-full text-xl md:text-2xl hover:scale-105 transition-transform flex items-center gap-3 shadow-lg border-none font-syne no-underline">
+                    <i data-lucide="download" class="w-6 h-6"></i>
+                    Download CV
+                </a>
+                
+                <div class="text-right mt-4 space-y-2">
+                    <p class="font-inter font-bold text-lg text-brand-bg opacity-90">
+                        Degree in Economics
+                    </p>
+                    <p class="font-inter text-md text-brand-bg opacity-70">
+                        La Sapienza University, Rome
+                    </p>
+                     <p class="font-inter text-md text-brand-bg opacity-70 mt-2">
+                        Italian (Native), Spanish (Bilingual), English (Proficient)
+                    </p>
+                </div>
+
+                <p class="font-inter opacity-80 max-w-xs text-center md:text-right text-lg mt-4">
+                    Based in Cagliari, Italy / Remote.<br/>
+                    Always happy to connect.
+                </p>
+            </div>
+        </div>
+        
+        <div class="mt-24 pt-8 border-t border-brand-bg/30 flex flex-col md:flex-row justify-between items-center gap-4 font-inter text-sm opacity-60">
+            <p>© 2026 Gabriele Sedda.</p>
+            <p>Bold Retro Portfolio.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        lucide.createIcons();
+
+        function closeMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('menu-btn');
+            
+            mobileMenu.classList.add('opacity-0');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            
+            menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            lucide.createIcons();
+        }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#f4f1ea]/95', 'backdrop-blur-sm', 'shadow-sm');
+            } else {
+                navbar.classList.remove('bg-[#f4f1ea]/95', 'backdrop-blur-sm', 'shadow-sm');
+            }
+        });
+
+        // MODAL LOGIC (ADDED)
+        const modal = document.getElementById('success-modal');
+        const openBtn = document.getElementById('open-modal-btn');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const backdrop = document.getElementById('modal-backdrop');
+
+        if (modal && openBtn && closeBtn && backdrop) {
+            function openModal() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('modal-open');
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+            }
+
+            openBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
