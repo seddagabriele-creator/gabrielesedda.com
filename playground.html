@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYYQRHKFQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZBYYQRHKFQ');
+    </script>
+    <!-- Fine Google tag -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriele Sedda | Playground</title>
+    
+    <!-- 1. ENGINE (Tailwind CSS via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. ICONE -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- 3. FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;600&family=Gloria+Hallelujah&family=Titan+One&display=swap" rel="stylesheet">
+
+    <!-- 4. CONFIGURAZIONE DESIGN (UNIFICATA) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#f4f1ea',      
+                        'brand-text': '#ea4c2a',    
+                        'brand-blue': '#2d76b1',
+                        'brand-black': '#1a1a1a', 
+                    },
+                    fontFamily: {
+                        'titan': ['"Titan One"', 'cursive'],
+                        'syne': ['"Syne"', 'sans-serif'],
+                        'inter': ['"Inter"', 'sans-serif'],
+                        'shrikhand': ['"Shrikhand"', 'cursive'],
+                        'gloria': ['"Gloria Hallelujah"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'hard-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'hard-xl': '12px 12px 0px 0px rgba(0,0,0,1)',
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f4f1ea;
+            color: #2A2A2A;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Nascondi scrollbar per la Quick Bar ma mantieni funzionalità */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Stile per gli input "invisibili" che sembrano testo */
+        .editable-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px dashed rgba(0,0,0,0.2);
+            color: inherit;
+            width: 100%;
+            text-align: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .editable-input:focus {
+            border-bottom: 2px solid currentColor;
+            background: rgba(255,255,255,0.1);
+        }
+        /* Rimuovi freccette numeriche */
+        .editable-input::-webkit-outer-spin-button,
+        .editable-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .editable-input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        /* --- LAYOUT --- */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
+
+        h1 { 
+            font-family: 'Shrikhand', cursive; 
+            font-size: 5rem; 
+            color: #ea4c2a; 
+            margin: 10px 0 20px 0; 
+            line-height: 0.9; 
+            text-transform: uppercase; 
+        }
+
+        .subtitle { 
+            font-family: 'Syne', sans-serif; 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: #2A2A2A; 
+        }
+
+        .badge { 
+            background-color: #2d76b1; 
+            color: white; 
+            padding: 8px 20px; 
+            border-radius: 50px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            letter-spacing: 1px; 
+            display: inline-block; 
+            transform: rotate(-2deg); 
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1); 
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ea4c2a; 
+            line-height: 1.4;
+            margin-bottom: 60px;
+        }
+
+        .section-title { 
+            font-family: 'Syne', sans-serif; 
+            font-weight: 800; 
+            font-size: 2.5rem; 
+            color: #2A2A2A; 
+            margin-top: 80px; 
+            margin-bottom: 30px; 
+            border-left: 6px solid #ea4c2a; 
+            padding-left: 20px; 
+            line-height: 1;
+        }
+        
+        p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+
+        /* Notebook Paper */
+        .notebook-paper {
+            background-color: #fff;
+            background-image: linear-gradient(#eee 1px, transparent 1px);
+            background-size: 100% 30px;
+            border-left: 4px solid #ffaa9f;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            padding: 30px 30px 30px 50px;
+            margin: 40px auto;
+            max-width: 600px;
+            transform: rotate(-2deg);
+            position: relative;
+            font-family: 'Gloria Hallelujah', cursive;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 30px;
+        }
+        .notebook-paper::before {
+            content: ''; position: absolute; top: -15px; left: 40%; width: 120px; height: 35px; background-color: rgba(255, 255, 255, 0.4);
+            border-left: 1px dashed rgba(0,0,0,0.1); border-right: 1px dashed rgba(0,0,0,0.1); box-shadow: 0 2px 5px rgba(0,0,0,0.05); transform: rotate(-2deg); background: rgba(234, 76, 42, 0.2);
+        }
+        .marker-circle { border: 3px solid #ea4c2a; border-radius: 50% 40% 60% 30% / 40% 50% 60% 50%; padding: 2px 10px; color: #ea4c2a; font-weight: bold; display: inline-block; transform: rotate(-5deg); }
+
+        /* Visual Components */
+        .challenge-box { background: #fff; border: 2px dashed #ea4c2a; padding: 30px; border-radius: 12px; display: flex; gap: 40px; align-items: center; }
+        @media(max-width: 700px) { .challenge-box { flex-direction: column; } }
+        
+        /* DJ Stack Specifics */
+        .stack-visual { width: 150px; display: flex; flex-direction: column-reverse; }
+        .s-layer { width: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; color: #fff; margin-bottom: 2px; position: relative; }
+        .sl-gear { height: 40px; background: #fff; border: 2px dashed #ccc; color: #ccc; }
+        .sl-wood { height: 8px; background: #ea4c2a; opacity: 0.8; }
+        .sl-top { height: 50px; background: #2d76b1; opacity: 0.5; color: #fff; }
+        .sl-bot { height: 70px; background: #2d76b1; }
+        .sl-wheel { height: 25px; background: #2A2A2A; border-radius: 0 0 10px 10px; }
+        .limit-line { border-top: 2px solid #ea4c2a; position: absolute; top: -20px; width: 100%; text-align: right; color: #ea4c2a; font-weight: bold; font-size: 0.8rem; }
+
+        /* Blueprint CSS */
+        .blueprint-wrapper { background: #2A2A2A; padding: 40px; border-radius: 12px; color: #fff; overflow-x: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .bp-container { width: 100%; max-width: 600px; margin: 0 auto; font-family: monospace; }
+        .bp-row { display: flex; width: 100%; justify-content: center; }
+        .bp-wood { background: #ea4c2a; height: 12px; width: 100%; }
+        .bp-vertical-wood { background: #ea4c2a; width: 12px; height: 100%; }
+        .bp-space { display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+        .shelf-top { height: 60px; width: 100%; background: rgba(255,255,255,0.05); }
+        .shelf-bot-container { height: 90px; width: 100%; display: flex; }
+        .speaker-zone { width: 22%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 1px dashed rgba(255,255,255,0.2); }
+        .vinyl-zone { flex-grow: 1; background: rgba(93, 138, 168, 0.2); display: flex; align-items: center; justify-content: center; color: #2d76b1; font-weight: bold;}
+        .dimension-line { display: flex; align-items: center; justify-content: center; color: #ea4c2a; font-size: 0.8rem; margin-top: 10px; border-top: 1px solid #ea4c2a; padding-top: 5px; }
+        .bp-wheels { display: flex; justify-content: space-between; padding: 0 30px; margin-top: -5px; }
+        .bp-wheel-circle { width: 30px; height: 30px; border: 2px solid #fff; border-radius: 50%; }
+        
+        /* Blueprint Gear */
+        .bp-gear-row { display: flex; justify-content: center; align-items: flex-end; width: 95%; margin: 0 auto 2px auto; gap: 4px; }
+        .bp-gear-item { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; height: 35px; font-weight: bold; border-radius: 2px; }
+
+        /* Metal C-Stand */
+        .simple-diagram-box {
+            background: #f4f4f4; border: 2px dashed #ddd; border-radius: 8px; height: 280px; position: relative;
+            display: flex; align-items: center; justify-content: center; overflow: hidden; font-family: 'Inter', sans-serif; margin: 20px 0;
+        }
+        .sd-wood-stack { position: relative; width: 140px; height: 160px; margin-left: 60px; display: flex; flex-direction: column; justify-content: flex-end; }
+        .sd-plank-top { height: 40px; background: #e0b080; border: 2px solid #c89060; margin-bottom: 20px; position: relative; z-index: 20; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #8a5a30; font-weight: bold; }
+        .sd-plank-body { height: 100px; background: #e0b080; border: 2px solid #c89060; border-top: none; position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #8a5a30; font-weight: bold; }
+        .sd-bracket-group { position: absolute; bottom: 60px; left: 50%; margin-left: -80px; width: 140px; height: 220px; z-index: 10; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; }
+        .sd-metal-insert { position: absolute; bottom: 100px; right: 0; width: 100px; height: 16px; background: #444; border-radius: 0 4px 4px 0; }
+        .sd-metal-vertical { position: absolute; bottom: 100px; left: 40px; width: 16px; height: 120px; background: #444; }
+        .sd-metal-plate { position: absolute; top: 0; left: 20px; width: 80px; height: 8px; background: #444; }
+        .sd-speaker { position: absolute; top: -80px; left: 30px; width: 60px; height: 80px; background: rgba(40,40,40,0.8); border: 1px solid #222; border-radius: 4px; }
+        .simple-diagram-box:hover .sd-bracket-group { transform: translateX(-60px); }
+        .sd-label { position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.75rem; color: #888; }
+        .sd-slot-line { position: absolute; bottom: 100px; right: 0; width: 100%; height: 20px; border-top: 1px dashed #bbb; border-bottom: 1px dashed #bbb; pointer-events: none; z-index: 1; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .gallery-item { position: relative; height: 250px; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; background: #eee; }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: white; padding: 20px 15px 10px; font-family: 'Syne', sans-serif; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-caption { opacity: 1; }
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
+        .lightbox.active { display: flex; animation: fadeIn 0.3s; }
+        .lightbox-img { max-width: 90%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .close-btn { position: absolute; top: 30px; right: 30px; color: white; font-size: 3rem; cursor: pointer; font-family: 'Syne', sans-serif; transition: color 0.2s; }
+        .close-btn:hover { color: #ea4c2a; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Separator */
+        .article-separator { border: 0; border-top: 2px dashed rgba(234, 76, 42, 0.2); margin: 100px auto; max-width: 900px; }
+
+        /* AdTech Stack */
+        .adtech-stack { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
+        .adtech-bar-group { display: flex; align-items: center; gap: 10px; }
+        .adtech-label { font-size: 0.8rem; font-weight: bold; width: 120px; text-align: right; color: #888; }
+        .adtech-bar-container { flex-grow: 1; height: 30px; background: #eee; border-radius: 4px; overflow: hidden; position: relative; }
+        .adtech-bar-fill { height: 100%; display: flex; align-items: center; padding-left: 10px; font-size: 0.7rem; font-weight: bold; color: white; }
+        .fill-cpm { width: 100%; background: #2d76b1; }
+        .fill-royalty { width: 5%; background: #ea4c2a; }
+
+        /* Custom Table for Portfolio */
+        .portfolio-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .portfolio-table th { background: #ea4c2a; color: white; text-align: left; padding: 15px; font-family: 'Syne', sans-serif; font-size: 0.9rem; }
+        .portfolio-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; color: #444; vertical-align: top; }
+        .portfolio-table tr:last-child td { border-bottom: none; }
+        .pct-badge { background: #2d76b1; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #ddd; margin-top: 60px; }
+        .cta-button { background-color: #ea4c2a; color: white; padding: 15px 30px; font-family: 'Syne', sans-serif; font-weight: 700; text-decoration: none; border-radius: 50px; transition: transform 0.2s; display: inline-block; }
+        .cta-button:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="w-full z-50 px-6 py-4 flex justify-between items-center bg-brand-bg text-brand-text border-b border-transparent relative">
+        <a href="index.html" class="font-bold text-xl tracking-tighter hover:opacity-80 cursor-pointer font-syne z-50 no-underline text-brand-text">
+            GABRIELE SEDDA
+        </a>
+        <button id="menu-btn" class="z-[101] text-brand-text cursor-pointer block">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+    </nav>
+
+    <!-- HEADER DEL PLAYGROUND (INTRO) -->
+    <div class="w-full bg-brand-bg py-10 px-6 text-center border-b border-brand-text/5">
+        <h1 class="text-[3.5rem] md:text-[5rem] font-shrikhand text-brand-blue leading-none mb-2" style="margin-bottom: 5px;">
+            Gabriele's Playground
+        </h1>
+        <p class="font-syne text-lg md:text-xl font-bold text-brand-text uppercase tracking-widest opacity-80">
+            Ideas • Projects • Reflections
+        </p>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-bg z-[200] flex flex-col items-center justify-center gap-6 text-2xl font-bold hidden opacity-0 transition-opacity duration-300 font-syne text-brand-text overflow-y-auto py-20">
+        <span class="text-xs font-bold opacity-50 uppercase tracking-widest mb-2 text-brand-black">Playground Index</span>
+        <a href="#yield-calculator" class="mobile-link hover:opacity-70 text-brand-blue no-underline" onclick="closeMenu()">Yield Calculator</a>
+        <a href="#mediterranean-roots" class="mobile-link hover:opacity-70 no-underline text-brand-text" onclick="closeMenu()">Roots & Horizons</a>
+        <a href="#acid-synth" class="mobile-link hover:opacity-70 text-brand-blue no-underline" onclick="closeMenu()">AcidBox 3030</a>
+        <a href="#scenario-2030" class="mobile-link hover:opacity-70 no-underline text-brand-text" onclick="closeMenu()">Publishing vs AI</a>
+        <a href="#dj-console" class="mobile-link hover:opacity-70 no-underline text-brand-text" onclick="closeMenu()">DJ Console</a>
+        <a href="#ai-energy-nexus" class="mobile-link hover:opacity-70 no-underline text-brand-text" onclick="closeMenu()">The Macro Bet</a>
+        <div class="w-12 h-0.5 bg-brand-text/20 my-4"></div>
+        <a href="index.html" class="text-lg opacity-60 hover:opacity-100 no-underline text-brand-black" onclick="closeMenu()">← Back to Home</a>
+    </div>
+
+    <!-- QUICK NAV STRIP -->
+    <div id="quick-nav" class="sticky top-0 w-full z-[90] bg-brand-bg border-b border-brand-text/10 overflow-x-auto hide-scrollbar py-3 px-4 flex gap-3 shadow-sm items-center transition-all">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 shrink-0 mr-1">Jump to:</span>
+        <a href="#yield-calculator" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            Yield Calc ⚡
+        </a>
+        <a href="#mediterranean-roots" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            Roots & Horizons
+        </a>
+        <a href="#acid-synth" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            AcidBox 3030 🎹
+        </a>
+        <a href="#scenario-2030" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            Publishing vs AI
+        </a>
+        <a href="#dj-console" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            DJ Console
+        </a>
+        <a href="#ai-energy-nexus" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            The Macro Bet
+        </a>
+    </div>
+
+    <!-- YIELD CALCULATOR -->
+    <div id="yield-calculator" class="app-container scroll-mt-28">
+        <div class="w-full bg-brand-bg border-2 border-black rounded-3xl overflow-hidden shadow-hard relative" style="height: 900px;">
+            <!-- Assumo che yieldcalculator.html sia servito dalla stessa root o gestito automaticamente dal server. -->
+            <iframe src="yieldcalculator.html" class="w-full h-full border-0" title="Yield Calculator"></iframe>
+        </div>
+    </div>
+
+    <hr class="article-separator">
+
+    <!-- ARTICLES -->
+    
+    <!-- ROOTS & HORIZONS -->
+    <div class="content-container scroll-mt-28" id="mediterranean-roots">
+        <div class="hero">
+            <span class="badge" style="background-color: #2d76b1; transform: rotate(1deg);">LIFESTYLE</span>
+            <h1>ROOTS &<br>HORIZONS</h1>
+            <div class="subtitle">Remote Work • Sardinia • Global Reach</div>
+        </div>
+        <p class="intro-text">The world is moving at light speed. We consume "Fast Content", chase quarterly targets, and adapt to AI acceleration daily. In this high-velocity environment, the ultimate luxury isn't just "time", but "grounding".</p>
+        <div style="margin: 40px 0; text-align: center;">
+            <img src="images/torre and flight connections.jpg" onerror="this.src='https://placehold.co/800x400?text=Torre+delle+Stelle+View'" alt="View from Torre delle Stelle and Connections" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #eee;">
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Torre delle Stelle: Where nature is the office backdrop.</p>
+        </div>
+        <p>I chose to base my life in Sardinia not to escape the race, but to run it better. Living away from the chaotic metropolis allows for a "Deep Work" state that is hard to achieve elsewhere. It's about contrasting the digital frenzy with analog peace: family, silence, and the sea.</p>
+        <p>But to make this sustainable, you need infrastructure. And the reason this lifestyle works is a small, strategic asset: <strong>Cagliari-Elmas Airport</strong>.</p>
+        <h2 class="section-title">01. The Praise of the "Small Airport"</h2>
+        <div class="notebook-paper" style="transform: rotate(1deg);">The Anti-Hub Experience:<br>- <strong>No Queues:</strong> Security takes minutes, not hours.<br>- <strong>Human Scale:</strong> From car park to gate in a heartbeat.<br>- <strong>Efficiency:</strong> One of the best-connected airports in Europe relative to its "livability".</div>
+        <h2 class="section-title">02. The Map of Possibilities</h2>
+        <p>It's not just about flights; it's about opportunity. Looking at the departure board, my professional network is within reach.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px;">
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #ea4c2a; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"><div style="color: #ea4c2a; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">BUSINESS HUBS</div><div style="font-size: 0.9rem; color: #555;">London, Paris, Milan</div><div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Direct flights. Day trips possible.</div></div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #2d76b1; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"><div style="color: #2d76b1; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">TECH HEART</div><div style="font-size: 0.9rem; color: #555;">Dublin, Berlin, Munich</div><div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Direct connection to innovation centers.</div></div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #4A4A4A; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"><div style="color: #4A4A4A; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">ITALY SHUTTLE</div><div style="font-size: 0.9rem; color: #555;">Rome, Milan</div><div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Daily shuttles. Constant bridge.</div></div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #ea4c2a; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"><div style="color: #ea4c2a; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">EUROPE OPEN</div><div style="font-size: 0.9rem; color: #555;">Barcelona, Madrid, Vienna</div><div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Direct access to key capitals.</div></div>
+        </div>
+        <p style="margin-top: 30px;">Having direct access to these cities while living a stone's throw from the Sardinian sea is the true <strong>remote work hack</strong>.</p>
+        <h2 class="section-title">03. The True Balance</h2>
+        <div class="challenge-box">
+            <div style="flex: 1;">
+                <h3 style="margin-top:0; font-family: 'Syne'; color: #2d76b1;">Nature & Ambition</h3>
+                <p style="font-size: 0.95rem;">Living here means giving my children the childhood I dreamed of: scraped knees, clean air, and freedom. But it also means not giving up on ambition and global connection.
+                </p>
+                <p style="font-size: 0.95rem;">I am not a hermit. I am a professional who has chosen to have his headquarters in nature, knowing that the world is just a 20-minute drive and a one-hour flight away.</p>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #2d76b1; opacity: 0.2;"><i data-lucide="scale" style="width: 100px; height: 100px;"></i></div>
+        </div>
+        <div style="background: #2A2A2A; color: #fff; padding: 40px; border-radius: 12px; font-family: 'Syne', sans-serif; position: relative; overflow: hidden; margin-top: 60px;">
+            <div style="position: absolute; top: -20px; right: -20px; font-size: 8rem; opacity: 0.1; font-family: 'Shrikhand';">~</div>
+            <h3 style="color: #ea4c2a; margin-top: 0; font-size: 1.5rem;">Conclusion</h3>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 0; font-family: 'Inter', sans-serif;">In an age where we can work from anywhere, the real question isn't "where do you need to be for work?", but <strong>"where do you want to be when you close your laptop?"</strong>.<br><br>I chose Torre delle Stelle. And Cagliari allows me not to have to choose between my career and this sea.</p>
+        </div>
+    </div>
+
+    <hr class="article-separator">
+    
+    <!-- ACID SYNTH -->
+    <div class="content-container scroll-mt-28" id="acid-synth">
+        <div class="hero">
+            <span class="badge" style="background-color: #ea4c2a; transform: rotate(-2deg);">INTERACTIVE AUDIO</span>
+            <h1>ACIDBOX<br>3030</h1>
+            <div class="subtitle">Web Audio API • TB-303 Clone • Techno</div>
+        </div>
+        <p class="intro-text">Why just read when you can play? This is a fully functional Acid Bassline synthesizer built entirely with vanilla JavaScript and the Web Audio API. No samples, just pure math generating sound waves in your browser.</p>
+        
+        <!-- Embed Container -->
+        <div class="w-full bg-brand-bg border-2 border-black rounded-3xl overflow-hidden shadow-hard relative" style="height: 850px;">
+            <iframe src="acidsynth.html" class="w-full h-full border-0" title="AcidBox 3030"></iframe>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9rem; text-align: center; opacity: 0.7;">*For the best experience, use Chrome or Firefox on Desktop.</p>
+    </div>
+
+    <hr class="article-separator">
+
+    <!-- PUBLISHING vs AI -->
+    <div class="content-container scroll-mt-28" id="scenario-2030">
+        <div class="hero">
+            <span class="badge" style="background-color: #ea4c2a; transform: rotate(2deg);">DIGITAL SHIFT</span>
+            <h1>PUBLISHING<br>vs AI</h1>
+            <div class="subtitle">Programmatic Crisis • Zero-Click Future • The New Revenue Models</div>
+        </div>
+        <p class="intro-text">The Problem: We are moving from the "Open Web" (Human traffic visiting sites) to a "Closed LLM" ecosystem (AI synthesizing answers). As a digital publisher or programmatic expert, I have to ask: <strong>who pays the bill when the user stops clicking?</strong></p>
+        <div style="margin: 40px 0; text-align: center;">
+            <img src="images/AI monopoly - publishing industry.jpg" onerror="this.src='https://placehold.co/800x400?text=AI+Monopoly+Graph'" alt="Scenario 2030 Infographic" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #eee;">
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Visualizing the shift from Distributed Web to Centralized Model.</p>
+        </div>
+        <h2 class="section-title">01. The Consumer Dilemma</h2>
+        <p><strong>"Is it really fair, even if it's more efficient?"</strong> This is the fundamental ethical question.</p>
+        <div class="notebook-paper">The Cost of Convenience:<br>- <strong>The Illusion:</strong> We love removing friction.<br>- <strong>The Cost:</strong> Loss of serendipity and critical thinking.<br>- <strong>The Black Box:</strong> Advice is indistinguishable from advertising.</div>
+        <p style="margin-top: 20px;"><strong>Conclusion:</strong> Convenience almost always beats privacy, unless the consumer is actively educated.</p>
+        <h2 class="section-title">02. System Equilibrium</h2>
+        <div class="challenge-box">
+            <div style="flex: 1;">
+                <h3 style="margin-top:0; font-family: 'Syne'; color: #ea4c2a;">Parasite or Symbiosis?</h3>
+                <p style="font-size: 0.95rem;"><strong>The "Model Collapse" Risk:</strong> If Publishers become penny-paid suppliers, they stop producing quality. The AI then feeds on its own synthetic content.</p>
+                <p style="font-size: 0.95rem;"><strong>The Correction:</strong> We either get massive licensing deals or "Data Walls".</p>
+            </div>
+            <div class="adtech-stack">
+                <div class="adtech-bar-group"><div class="adtech-label">WEB 2.0</div><div class="adtech-bar-container"><div class="adtech-bar-fill fill-cpm">FREE / AD-SUPPORTED</div></div></div>
+                <div class="adtech-bar-group"><div class="adtech-label">WEB 3.0</div><div class="adtech-bar-container"><div class="adtech-bar-fill fill-royalty"></div><span style="position: absolute; left: 10px; top: 5px; font-size: 0.7rem; color: #aaa;">PREMIUM / GATED</span></div></div>
+            </div>
+        </div>
+        <h2 class="section-title">03. The "Left Behind"</h2>
+        <p>If "Frontend design becomes superfluous", what happens to the ecosystem?</p>
+        <p><strong>Conclusion:</strong> Wealth concentrates in the hands of the Interface owners (The Model) and the Truth owners (Raw Data). The middleman disappears.</p>
+        <h2 class="section-title">04. Politics & Regulation</h2>
+        <p>Politics is currently running on a 10-year lag.</p>
+        <p><strong>Conclusion:</strong> State intervention will likely be needed to fund independent information, as the free market of advertising collapses.</p>
+        <div style="background: #2A2A2A; color: #fff; padding: 40px; border-radius: 12px; font-family: 'Syne', sans-serif; position: relative; overflow: hidden; margin-top: 60px;">
+            <div style="position: absolute; top: -20px; right: -20px; font-size: 8rem; opacity: 0.1; font-family: 'Shrikhand';">!</div>
+            <h3 style="color: #ea4c2a; margin-top: 0; font-size: 1.5rem;">Final Synthesis: The Death of Navigation</h3>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 0; font-family: 'Inter', sans-serif;">The "Ghost Site" is our destiny. Power no longer lies in content creation, but in becoming the <strong>Certified Source of Truth</strong> for the digital oracle.</p>
+        </div>
+    </div>
+
+    <hr class="article-separator">
+
+    <!-- DJ CONSOLE (COMPACT LAB) -->
+    <div class="content-container scroll-mt-28" id="dj-console">
+        <div class="hero">
+            <span class="badge">DIY PROJECT</span>
+            <h1>THE MUSIC<br>SETUP</h1>
+            <div class="subtitle">Zero Clutter • Custom Joinery • High Fidelity</div>
+        </div>
+        <p class="intro-text">The Problem: A living room invaded by cables, tripods, and bulky desks. The need for a professional DJ setup that disappears when the music stops.</p>
+        <h2 class="section-title">01. The Dilemma</h2>
+        <p>My current setup sounds great but looks like a backstage area. Tripods take up floor space, and cables are everywhere.</p>
+        <div class="notebook-paper">Project Requirements:<br>- <span class="marker-circle">NO TRIPODS</span> (Clean floor)<br>- <strong>Retractable:</strong> Must fit in tight corners.<br>- <strong>Cable Void:</strong> Zero visible wiring.<br>- <strong>Integrated Audio:</strong> Speakers on the deck, not on the floor.</div>
+        <h2 class="section-title">02. The "Invisible" Console</h2>
+        <div class="challenge-box">
+            <div style="flex: 1;">
+                <h3 style="margin-top:0; font-family: 'Syne'; color: #ea4c2a;">The Cable Management Gap</h3>
+                <p style="font-size: 0.95rem;">Instead of fighting with cables, I designed a dedicated "void". A 10cm gap between the main deck and the vinyl storage allows power and RCA cables to drop straight down, unseen.</p>
+                <p style="font-size: 0.95rem;"><strong>The Result:</strong> A floating effect where the gear seems to sit on a clean block of wood, with no visual noise.</p>
+            </div>
+            <div class="stack-visual">
+                <div style="position: relative; width: 100%;"><div class="limit-line">CLEAN SURFACE</div></div>
+                <div class="s-layer sl-gear">Decks & Mixer</div>
+                <div class="s-layer sl-wood"></div>
+                <div class="s-layer sl-top" style="background: #222; color: #888; border: 1px dashed #555;">The "Cable Void"</div>
+                <div class="s-layer sl-wood"></div>
+                <div class="s-layer sl-bot">Vinyl Archive</div>
+                <div class="s-layer sl-wood"></div>
+                <div class="s-layer sl-wheel"></div>
+            </div>
+        </div>
+        <h2 class="section-title">03. The Blueprint</h2>
+        <div class="blueprint-wrapper">
+            <div class="bp-container">
+                <div class="bp-gear-row">
+                    <div class="bp-gear-item" style="width: 32%;">TECHNICS</div>
+                    <div class="bp-gear-item" style="width: 20%; background: rgba(45, 118, 177, 0.2); border-color: #2d76b1;">MIXER</div>
+                    <div class="bp-gear-item" style="width: 32%;">TECHNICS</div>
+                </div>
+                <div class="bp-row bp-wood"></div>
+                <div class="bp-row"><div class="bp-vertical-wood"></div><div class="bp-space shelf-top">HIDDEN CABLE CHANNEL</div><div class="bp-vertical-wood"></div></div>
+                <div class="bp-row bp-wood"></div>
+                <div class="bp-row shelf-bot-container">
+                    <div class="bp-vertical-wood"></div>
+                    <div class="speaker-zone"><span style="font-size:0.6rem;">SPEAKER<br>L</span></div>
+                    <div class="bp-vertical-wood"></div>
+                    <div class="vinyl-zone">VINYLS</div>
+                    <div class="bp-vertical-wood"></div>
+                    <div class="speaker-zone"><span style="font-size:0.6rem;">SPEAKER<br>R</span></div>
+                    <div class="bp-vertical-wood"></div>
+                </div>
+                <div class="bp-row bp-wood"></div>
+                <div class="bp-wheels"><div class="bp-wheel-circle"></div><div class="bp-wheel-circle"></div></div>
+                <div class="dimension-line">COMPACT FOOTPRINT</div>
+            </div>
+        </div>
+        <h2 class="section-title">03b. The Hidden Upgrade</h2>
+        <div class="challenge-box" style="background: #fdfdfd; border-style: solid;">
+            <div style="flex: 1;">
+                <h3 style="margin-top:0; font-family: 'Syne'; color: #ea4c2a;">Audio vs. Aesthetics</h3>
+                <p style="font-size: 0.95rem;"><strong>The Solution: "Metal C-Frames".</strong> I designed two raw iron brackets shaped like a "C". The bottom part fits into a hidden slot in the cabinet, while the top part offers a solid base for the speaker.</p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <div class="simple-diagram-box">
+                    <div class="sd-bracket-group">
+                        <div class="sd-speaker"></div>
+                        <div class="sd-metal-plate"></div>
+                        <div class="sd-metal-vertical"></div>
+                        <div class="sd-metal-insert"></div>
+                    </div>
+                    <div class="sd-wood-stack">
+                        <div class="sd-plank-top">TOP PLANK (5cm)</div>
+                        <div class="sd-slot-line"></div>
+                        <div class="sd-plank-body">CONSOLE SIDE</div>
+                    </div>
+                    <div class="sd-label">Hover to slide out</div>
+                </div>
+            </div>
+        </div>
+        <h2 class="section-title">04. Gallery (The Vibe)</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/foto mobile frontale golden hour.jpg" onerror="this.src='https://placehold.co/600x400?text=Console+Golden+Hour'" alt="Golden Hour"><div class="gallery-caption">Golden Hour Vibe</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/foto mobile frontale studio.jpg" onerror="this.src='https://placehold.co/600x400?text=Studio+Context'" alt="Studio"><div class="gallery-caption">Professional Studio Context</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/foto mobile frontale museum.jpg" onerror="this.src='https://placehold.co/600x400?text=Museum+View'" alt="Museum"><div class="gallery-caption">Minimalist Gallery View</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/foto mobile frontale con gente.jpg" onerror="this.src='https://placehold.co/600x400?text=Party+Mode'" alt="Lifestyle"><div class="gallery-caption">Lifestyle & Party Mode</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/dettaglio pino.jpg" onerror="this.src='https://placehold.co/600x400?text=Wood+Detail'" alt="Detail"><div class="gallery-caption">Raw Pine & Steel Detail</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="images/3d pino.jpg" onerror="this.src='https://placehold.co/600x400?text=3D+Concept'" alt="3D"><div class="gallery-caption">3D Concept Art</div></div>
+        </div>
+    </div>
+
+    <hr class="article-separator">
+
+    <!-- THE MACRO BET -->
+    <div class="content-container scroll-mt-28" id="ai-energy-nexus">
+        <div class="hero">
+            <span class="badge" style="background-color: #2d76b1; transform: rotate(-1deg);">MACRO THESIS</span>
+            <h1>THE MACRO<br>BET</h1>
+            <div class="subtitle">Capital Rotation • Hard Assets • The Super-Cycle</div>
+        </div>
+        <p class="intro-text">The biggest wealth transfer of our decade is happening right now. We are moving from the era of "Asset-Light Software" (SaaS, Apps) to the era of "Asset-Heavy Infrastructure." The question for the smart investor isn't "which app will win?", but <strong>"who owns the physical value chain required to power them all?"</strong></p>
+        <div style="margin: 40px 0; text-align: center;">
+            <img src="images/scenario and etf.jpg" onerror="this.src='https://placehold.co/800x400?text=Macro+Bet+Chart'" alt="AI Energy Nexus Infographic" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #eee;">
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Visualizing the bottleneck: Capital vs Constraints.</p>
+        </div>
+        <h2 class="section-title">01. The "CapEx" Tsunami</h2>
+        <p>Right now, the "Hyperscalers" (Microsoft, Google, Amazon, Meta) are engaged in an unprecedented arms race, pouring hundreds of billions into physical assets.</p>
+        <div class="notebook-paper">The Investment Reality:<br>- <strong>Physical Lag:</strong> Software scales instantly; Power Plants take 10 years.<br>- <strong>Grid Saturation:</strong> You can buy the chips, but you can't plug them in.<br>- <strong>Sovereignty:</strong> Nations are treating data centers as critical military infrastructure.</div>
+        <h2 class="section-title">02. Investment Outcomes</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 2px dashed #ea4c2a;"><h3 style="font-family: 'Syne'; color: #ea4c2a; margin-top: 0;">A. Nuclear Renaissance</h3><p style="font-size: 0.9rem;"><strong>The "Baseload" Crisis:</strong> Renewables are too intermittent for 24/7 industrial demand.</p><p style="font-size: 0.9rem;"><strong>Outcome:</strong> Tech giants become energy companies (MSFT + Three Mile Island).</p><div class="mt-4"><span class="badge" style="font-size: 0.7rem; background: #2A2A2A;">WINNER: URANIUM</span></div></div>
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 2px dashed #2d76b1;"><h3 style="font-family: 'Syne'; color: #2d76b1; margin-top: 0;">B. Sovereign Protectionism</h3><p style="font-size: 0.9rem;"><strong>Data Nationalism:</strong> Every nation wants its own sovereign intelligence to avoid dependence.</p><p style="font-size: 0.9rem;"><strong>Outcome:</strong> Fragmentation of the global internet into walled supply chains.</p><div class="mt-4"><span class="badge" style="font-size: 0.7rem; background: #2A2A2A;">WINNER: DEFENSE</span></div></div>
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 2px dashed #4A4A4A;"><h3 style="font-family: 'Syne'; color: #4A4A4A; margin-top: 0;">C. Physical Constraints</h3><p style="font-size: 0.9rem;"><strong>Heat & Power:</strong> Traditional air cooling fails. Grids are old.</p><p style="font-size: 0.9rem;"><strong>Outcome:</strong> Massive shift to Liquid Cooling and Copper super-cycle for grids.</p><div class="mt-4"><span class="badge" style="font-size: 0.7rem; background: #2A2A2A;">WINNER: COPPER</span></div></div>
+        </div>
+        <h2 class="section-title">03. The "Pick and Shovel" Strategy</h2>
+        <p>For a Long-Term Accumulation Plan (PAC), avoid betting on the "gold rush" winners (the apps). Own the shovel sellers.</p>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="challenge-box" style="padding: 20px; gap: 20px;">
+                <div style="background: #ea4c2a; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; flex-shrink: 0;">1</div>
+                <div><h3 style="margin: 0; color: #ea4c2a;">The Brains: Semiconductors</h3><p style="margin: 5px 0 10px;">High Volatility, High Growth. Modern industry cannot exist without logic chips.</p><div style="display: flex; gap: 10px; flex-wrap: wrap;"><span class="pct-badge" style="background: #eee; color: #333;">Nvidia</span><span class="pct-badge" style="background: #eee; color: #333;">TSMC</span><span class="pct-badge" style="background: #eee; color: #333;">ASML</span><span class="pct-badge" style="background: #eee; color: #333;">ETF: SMH / SEMI</span></div></div>
+            </div>
+            <div class="challenge-box" style="padding: 20px; gap: 20px;">
+                <div style="background: #2d76b1; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; flex-shrink: 0;">2</div>
+                <div><h3 style="margin: 0; color: #2d76b1;">The Body: Cloud & Big Data</h3><p style="margin: 5px 0 10px;">Stability + Growth. Microsoft, Amazon, Google are the digital landlords.</p><div style="display: flex; gap: 10px; flex-wrap: wrap;"><span class="pct-badge" style="background: #eee; color: #333;">ETF: XAIX</span><span class="pct-badge" style="background: #eee; color: #333;">ETF: AIAI</span></div></div>
+            </div>
+            <div class="challenge-box" style="padding: 20px; gap: 20px;">
+                <div style="background: #4A4A4A; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; flex-shrink: 0;">3</div>
+                <div><h3 style="margin: 0; color: #4A4A4A;">The Fuel: Clean Energy & Nuclear</h3><p style="margin: 5px 0 10px;">The Contra-Bet. Data centers convert electricity into intelligence.</p><div style="display: flex; gap: 10px; flex-wrap: wrap;"><span class="pct-badge" style="background: #eee; color: #333;">ETF: URNU</span><span class="pct-badge" style="background: #eee; color: #333;">ETF: INRG</span></div></div>
+            </div>
+            <div class="challenge-box" style="padding: 20px; gap: 20px;">
+                <div style="background: #2A2A2A; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; flex-shrink: 0;">4</div>
+                <div><h3 style="margin: 0; color: #2A2A2A;">The Shield: Cybersecurity</h3><p style="margin: 5px 0 10px;">The Geopolitical Play. Defense spending is non-discretionary.</p><div style="display: flex; gap: 10px; flex-wrap: wrap;"><span class="pct-badge" style="background: #eee; color: #333;">ETF: ISPY</span><span class="pct-badge" style="background: #eee; color: #333;">ETF: LOCK</span></div></div>
+            </div>
+        </div>
+        <h2 class="section-title">04. The Infrastructure Portfolio</h2>
+        <p>A hypothetical allocation for a long-term accumulation plan (PAC).</p>
+        <table class="portfolio-table">
+            <thead><tr><th>Weight</th><th>Theme</th><th>Role</th></tr></thead>
+            <tbody>
+                <tr><td><span class="pct-badge">40%</span></td><td><strong>MSCI World / S&P 500</strong></td><td>Core: The safety net. Top holdings are already the infrastructure giants.</td></tr>
+                <tr><td><span class="pct-badge" style="background: #ea4c2a;">20%</span></td><td><strong>Semiconductors (SMH)</strong></td><td>Growth: Direct exposure to the hardware boom.</td></tr>
+                <tr><td><span class="pct-badge" style="background: #2d76b1;">15%</span></td><td><strong>Big Data / Cloud (XAIX)</strong></td><td>Quality: The platform owners and digital landlords.</td></tr>
+                <tr><td><span class="pct-badge" style="background: #4A4A4A;">15%</span></td><td><strong>Energy / Nuclear (NUCL)</strong></td><td>Hedge: Betting on the power shortage bottleneck.</td></tr>
+                <tr><td><span class="pct-badge" style="background: #2A2A2A;">10%</span></td><td><strong>Cybersecurity (LOCK)</strong></td><td>Defense: Protection against digital risks.</td></tr>
+            </tbody>
+        </table>
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">*Crucial Note: This sector is capital intensive. A PAC (DCA) strategy is recommended to smooth out entry prices during corrections.</p>
+        <footer>
+            <h3 style="font-family: 'Shrikhand'; color: #ea4c2a; font-size: 2rem;">LET'S TALK</h3>
+            <p>Like these topics? Let's connect.</p>
+            <a href="mailto:seddagabriele@gmail.com" class="cta-button">Contact Me</a>
+        </footer>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Zoom Image">
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        function closeMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('menu-btn');
+            
+            mobileMenu.classList.add('opacity-0');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            
+            menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            lucide.createIcons();
+        }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        // Simplified navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.className === 'close-btn') {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // --- SCROLL SPY FOR QUICK NAV ---
+        // This script highlights the active section in the Quick Nav strip
+        const sections = document.querySelectorAll('.content-container, .app-container');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let isClicking = false; // Flag to prevent scroll spy during click scroll
+        let lastActiveId = ''; // Optimization: track the last active section to avoid redundant updates
+
+        function setActiveLink() {
+            if(isClicking) return; // Don't run logic if user just clicked
+
+            let current = null;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Offset adjustment for the sticky header
+                if (window.scrollY >= (sectionTop - 350)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // PERFORMANCE FIX: Only update DOM if the active section has actually changed
+            if (current !== lastActiveId) {
+                lastActiveId = current; // Update tracker
+
+                navLinks.forEach(link => {
+                    // Reset to default (inactive) state
+                    link.classList.remove('bg-brand-blue', 'text-white', 'shadow-md', 'scale-105');
+                    link.classList.add('bg-white/50', 'text-brand-black', 'hover:bg-brand-text', 'hover:text-white');
+                    
+                    // If we have a current section and this link matches it
+                    if (current && link.getAttribute('href') === '#' + current) {
+                        link.classList.remove('bg-white/50', 'text-brand-black', 'hover:bg-brand-text', 'hover:text-white');
+                        link.classList.add('bg-brand-blue', 'text-white', 'shadow-md', 'scale-105');
+                        
+                        // REMOVED AUTO-SCROLL to prevent mobile stuttering
+                        // The user can scroll the menu horizontally manually if needed.
+                        // link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                });
+            }
+        }
+
+        // Add explicit click handlers to fix jump issues
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                isClicking = true;
+                // Let native anchor behavior happen, but update styles immediately
+                
+                // Update styles manually for instant feedback
+                navLinks.forEach(l => {
+                    l.classList.remove('bg-brand-blue', 'text-white', 'shadow-md', 'scale-105');
+                    l.classList.add('bg-white/50', 'text-brand-black', 'hover:bg-brand-text', 'hover:text-white');
+                });
+                link.classList.remove('bg-white/50', 'text-brand-black', 'hover:bg-brand-text', 'hover:text-white');
+                link.classList.add('bg-brand-blue', 'text-white', 'shadow-md', 'scale-105');
+
+                // Re-enable scroll spy after scrolling finishes (approximate time)
+                setTimeout(() => {
+                    isClicking = false;
+                    // Sync the tracker so scroll spy takes over correctly after the jump
+                    const targetId = link.getAttribute('href').substring(1);
+                    if(targetId) lastActiveId = targetId; 
+                }, 1000);
+            });
+        });
+
+        window.addEventListener('scroll', setActiveLink);
+        // Run on load
+        setActiveLink();
+        
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
