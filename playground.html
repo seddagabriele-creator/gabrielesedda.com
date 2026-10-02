@@ -335,6 +335,9 @@
         <a href="#nomad-balance" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
             Nomad Balance
         </a>
+        <a href="#audiopipe" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
+            AudioPipe 🎧
+        </a>
         <a href="#yield-calculator" class="nav-link shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-black/10 bg-white/50 text-xs font-bold text-brand-black hover:bg-brand-text hover:text-white transition-all shadow-sm">
             Yield Calc ⚡
         </a>
@@ -427,6 +430,108 @@
             <h3 style="color: #ea4c2a; margin-top: 0; font-size: 1.5rem;">Try NomadBalance</h3>
             <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px; font-family: 'Inter', sans-serif;">Focus. Fuel. Move. Plan. Four pillars for a better workday — free, no install, works offline. Start your first day in under a minute.</p>
             <a href="https://nomadbalance.app" target="_blank" rel="noopener" class="cta-button" style="font-size: 0.95rem;">Start for free →</a>
+        </div>
+    </div>
+
+    <hr class="article-separator">
+
+    <!-- AUDIOPIPE -->
+    <div class="content-container scroll-mt-28" id="audiopipe">
+        <style>
+            .ap-gallery { display: flex; gap: 18px; overflow-x: auto; padding: 10px 4px 24px; scroll-snap-type: x mandatory; }
+            .ap-shot { flex: 0 0 200px; margin: 0; scroll-snap-align: start; }
+            .ap-shot img { width: 100%; aspect-ratio: 540 / 940; object-fit: cover; object-position: top; border-radius: 22px; border: 3px solid #2A2A2A; box-shadow: 6px 6px 0 #ea4c2a; display: block; background: #f4f1ea; }
+            .ap-shot figcaption { font-size: 0.8rem; margin-top: 12px; opacity: 0.75; line-height: 1.3; }
+        </style>
+        <div class="hero">
+            <span class="badge" style="background-color: #2d76b1; transform: rotate(1deg);">SIDE PROJECT</span>
+            <h1>AUDIO<br>PIPE</h1>
+            <div class="subtitle">Android • Audio-only • Offline Library • Spotify Import</div>
+        </div>
+        <p class="intro-text">I wanted the music I like without the video, the ads and the subscription juggling. AudioPipe is a small Android app that turns YouTube and YouTube Music into an audio-only player, with a real library, offline downloads and a few smart touches.</p>
+
+        <h2 class="section-title">01. The Idea</h2>
+        <p>Open-source apps like NewPipe already let you play YouTube without the official app, but they are built around video. I wanted the opposite: something that <strong>feels like Spotify</strong> (library, playlists, offline mode) while finding almost anything that exists on YouTube, from album tracks to live versions and podcasts.</p>
+
+        <div class="ap-gallery">
+            <figure class="ap-shot">
+                <img src="images/audiopipe/home.jpg" alt="AudioPipe — Mix for you, built from your last plays" loading="lazy">
+                <figcaption>Mix for you, built from your last plays</figcaption>
+            </figure>
+            <figure class="ap-shot">
+                <img src="images/audiopipe/search.jpg" alt="AudioPipe — One search: songs, playlists, albums, channels" loading="lazy">
+                <figcaption>One search: songs, playlists, albums, channels</figcaption>
+            </figure>
+            <figure class="ap-shot">
+                <img src="images/audiopipe/playlist.jpg" alt="AudioPipe — One-tap download &amp; radio" loading="lazy">
+                <figcaption>One-tap download &amp; radio</figcaption>
+            </figure>
+            <figure class="ap-shot">
+                <img src="images/audiopipe/lyrics.jpg" alt="AudioPipe — Synced, karaoke-style lyrics" loading="lazy">
+                <figcaption>Synced, karaoke-style lyrics</figcaption>
+            </figure>
+            <figure class="ap-shot">
+                <img src="images/audiopipe/channel.jpg" alt="AudioPipe — Any channel becomes a playlist" loading="lazy">
+                <figcaption>Any channel becomes a playlist</figcaption>
+            </figure>
+            <figure class="ap-shot">
+                <img src="images/audiopipe/spotify.jpg" alt="AudioPipe — Bring your Spotify library" loading="lazy">
+                <figcaption>Bring your Spotify library</figcaption>
+            </figure>
+        </div>
+
+        <h2 class="section-title">02. What It Does</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px;">
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #ea4c2a; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div style="color: #ea4c2a; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">LISTEN</div>
+                <div style="font-size: 0.9rem; color: #555;">Search everywhere</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">One search across YouTube Music and YouTube, plus playlists, albums and channels. Synced lyrics, karaoke style.</div>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #2d76b1; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div style="color: #2d76b1; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">OFFLINE</div>
+                <div style="font-size: 0.9rem; color: #555;">Your library, on your phone</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Liked songs and playlists with one-tap download, in the best quality YouTube offers. Export to the phone's Music folder.</div>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #4A4A4A; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div style="color: #4A4A4A; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">DISCOVER</div>
+                <div style="font-size: 0.9rem; color: #555;">Mix for you &amp; radio</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">A mix built from your last 20 plays, a radio from any song or playlist, and a thumbs down to keep it on taste.</div>
+            </div>
+            <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid #ea4c2a; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div style="color: #ea4c2a; font-weight: bold; font-family: 'Syne'; margin-bottom: 10px;">MOVE IN</div>
+                <div style="font-size: 0.9rem; color: #555;">Spotify import</div>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Export your library with Exportify: AudioPipe finds your liked songs and playlists in the background, one by one.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">03. Under the Hood</h2>
+        <div class="challenge-box">
+            <div style="flex: 1;">
+                <h3 style="margin-top:0; font-family: 'Syne'; color: #2d76b1;">Small app, serious plumbing</h3>
+                <p style="font-size: 0.95rem;"><strong>Kotlin + Jetpack Compose</strong>, with a Media3 player that keeps going in the background and on the lock screen.<br>
+                <strong>NewPipeExtractor</strong>, the open-source engine behind NewPipe, compiled from source.<br>
+                <strong>Every change</strong> builds a new APK and runs an automated test on an Android emulator, screenshots included.<br>
+                <strong>A tiny backend</strong> for anonymous usage stats and in-app announcements. Available in English, Italian and Spanish.</p>
+                <p style="font-size: 0.95rem; margin-bottom: 0;">Designed by me, built with Claude Code as my pair programmer.</p>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #2d76b1; opacity: 0.2;">
+                <i data-lucide="headphones" style="width: 100px; height: 100px;"></i>
+            </div>
+        </div>
+
+        <h2 class="section-title">04. Honest Limits</h2>
+        <div class="notebook-paper" style="transform: rotate(-1deg);">
+            What it can't do (yet):<br>
+            - <strong>Songs made for kids:</strong> YouTube only serves them to its own apps, so AudioPipe hides them.<br>
+            - <strong>YouTube moves fast:</strong> the engine needs an update every now and then.<br>
+            - <strong>No Play Store:</strong> a personal, non-commercial project shared with a few friends. Not affiliated with YouTube, Google or Spotify.
+        </div>
+
+        <div style="background: #2A2A2A; color: #fff; padding: 40px; border-radius: 12px; font-family: 'Syne', sans-serif; position: relative; overflow: hidden; margin-top: 60px;">
+            <div style="position: absolute; top: -20px; right: -20px; font-size: 8rem; opacity: 0.1; font-family: 'Shrikhand';">♪</div>
+            <h3 style="color: #ea4c2a; margin-top: 0; font-size: 1.5rem;">Curious?</h3>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px; font-family: 'Inter', sans-serif;">AudioPipe is a private beta for friends. If you'd like to give it a spin, drop me a line.</p>
+            <a href="mailto:seddagabriele@gmail.com?subject=AudioPipe" class="cta-button" style="font-size: 0.95rem;">Get in touch →</a>
         </div>
     </div>
 
