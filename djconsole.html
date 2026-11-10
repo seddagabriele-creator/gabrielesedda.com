@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Console · 3D model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Interactive 3D model of the DJ console, embedded in playground.html.
+         djconsole.js is generated from the console-dj project: do not edit it by hand. -->
+    <style>
+        :root { --bg: #f4f1ea; --ink: #1a1a1a; --orange: #ea4c2a; --muted: #7a756b; }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; height: 100%; }
+        body {
+            background: radial-gradient(120% 90% at 50% 20%, #fdfcf9 0%, var(--bg) 70%);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        #stage { position: absolute; inset: 0; touch-action: none; cursor: grab; }
+        #stage:active { cursor: grabbing; }
+        #stage canvas { display: block; outline: none; }
+
+        .ui { position: absolute; z-index: 2; display: flex; gap: 8px; align-items: center; pointer-events: none; }
+        .ui > * { pointer-events: auto; }
+        .top { top: 16px; left: 16px; right: 16px; justify-content: space-between; }
+        .bottom { bottom: 16px; left: 16px; right: 16px; justify-content: space-between; flex-wrap: wrap; }
+
+        button { font-family: 'Syne', sans-serif; font-weight: 700; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+        .seg { display: inline-flex; padding: 3px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; }
+        .seg button { border: 0; background: transparent; color: var(--ink); border-radius: 999px; padding: 7px 14px; font-size: 13px; white-space: nowrap; }
+        .seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+        .zoom { display: flex; gap: 6px; }
+        .zoom button { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--ink); background: #fff; color: var(--ink); font-size: 19px; line-height: 1; }
+
+        #toggle {
+            border: 2px solid var(--ink); background: var(--orange); color: #fff; border-radius: 999px;
+            padding: 12px 22px; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--ink); transition: transform 0.15s, box-shadow 0.15s; min-width: 220px;
+        }
+        #toggle:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+        #toggle:disabled { opacity: 0.75; cursor: progress; }
+
+        .cams { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+        .cams button { border: 1.5px solid rgba(26, 26, 26, 0.25); background: rgba(255, 255, 255, 0.85); color: var(--ink); border-radius: 999px; padding: 6px 12px; font-size: 12px; }
+        .cams button:hover { border-color: var(--ink); }
+
+        .hint { position: absolute; z-index: 2; left: 0; right: 0; bottom: 74px; text-align: center; font-size: 12px; color: var(--muted); pointer-events: none; }
+        .fallback { display: none; position: absolute; inset: 0; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+        .no-webgl .fallback { display: grid; }
+        .no-webgl .ui, .no-webgl .hint { display: none; }
+
+        @media (max-width: 640px) {
+            .top { flex-direction: column; align-items: stretch; }
+            .top .seg { display: flex; }
+            .top .seg button { flex: 1; padding: 7px 6px; }
+            .zoom { position: absolute; top: 52px; right: 0; flex-direction: column; }
+            .bottom { flex-direction: column; align-items: stretch; }
+            #toggle { width: 100%; }
+            .cams { justify-content: center; }
+            .hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div id="stage"></div>
+
+    <div class="ui top">
+        <div class="seg" role="group" aria-label="What to show">
+            <button data-mode="tutto" aria-pressed="true">Full setup</button>
+            <button data-mode="mobile" aria-pressed="false">Cabinet</button>
+            <button data-mode="ferro" aria-pressed="false">Steel only</button>
+        </div>
+        <div class="zoom">
+            <button data-zoom="0.8" aria-label="Zoom in">+</button>
+            <button data-zoom="1.25" aria-label="Zoom out">−</button>
+        </div>
+    </div>
+
+    <p class="hint">Drag to rotate · scroll or pinch to zoom</p>
+
+    <div class="ui bottom">
+        <button id="toggle">Raise the speakers</button>
+        <div class="cams" role="group" aria-label="Camera">
+            <button data-cam="tre-quarti">3/4</button>
+            <button data-cam="fronte">Front</button>
+            <button data-cam="lato">Side</button>
+            <button data-cam="alto">Top</button>
+            <button data-cam="sotto">Below</button>
+            <button data-cam="supporto">C-stand</button>
+        </div>
+    </div>
+
+    <p class="fallback">The 3D model needs WebGL, which this browser doesn't support.</p>
+
+    <script type="module" src="djconsole.js"></script>
+</body>
+</html>
